@@ -1,7 +1,7 @@
-package src; // ÆĞÅ°Áö ±¸Á¶¿¡ ¸Â°Ô ¼öÁ¤ÇØÁÖ¼¼¿ä.
+package src; // íŒ¨í‚¤ì§€ êµ¬ì¡°ì— ë§ê²Œ ìˆ˜ì •í•´ì£¼ì„¸ìš”.
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("helloÀÚ¹Ù");
+        System.out.println("helloìë°”");
     }
 }
