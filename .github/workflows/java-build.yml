@@ -1,4 +1,4 @@
-name: Java Compile and Run
+name: Java Compile and Run # 워크플로우 이름
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
         with:
           java-version: '17' # 사용할 Java 버전
           distribution: 'temurin' # Java 배포판 (Temurin 권장)
-          cache: 'maven' # Maven 캐싱 활성화 (프로젝트에서 Maven 사용 시 유용)
+          # cache: 'maven' # 이 줄을 삭제합니다. 프로젝트가 Maven을 사용하지 않으면 필요 없습니다.
 
       - name: Compile Main.java # 3. Main.java 컴파일
         run: |
