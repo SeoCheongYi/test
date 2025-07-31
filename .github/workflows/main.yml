@@ -21,8 +21,7 @@ build:
           echo "This file was created on $(date)" >> output.txt # 현재 날짜/시간 추가
           echo "File content:" # 파일 내용 출력
           cat output.txt # 파일 내용 터미널에 출력
-        -name: print1
-         run: echo "heeeeeeeeeeeeeeee!"
+
       # - name: Upload output file as an artifact # 출력 파일을 아티팩트로 업로드
       #   uses: actions/upload-artifact@v4 # 아티팩트 업로드를 위한 액션 사용
       #   with:
