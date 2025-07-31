@@ -24,9 +24,8 @@ jobs:
 
       - name: Compile Main.java with specific encoding # 3. Main.java 컴파일 (인코딩 지정)
         run: |
-          # 파일이 EUC-KR로 저장되었다고 가정하고 컴파일합니다.
-          # 만약 CP949 (MS949)라면 -encoding CP949 로 변경하세요.
-          javac -encoding EUC-KR src/Main.java
+          # 파일이 CP949로 저장되었다고 가정하고 컴파일합니다.
+          javac -encoding CP949 src/Main.java
           ls src/ # 생성된 파일 확인
 
       - name: Run Main.class
