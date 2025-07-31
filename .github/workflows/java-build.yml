@@ -21,23 +21,28 @@ jobs:
         with:
           java-version: '17' # 사용할 Java 버전
           distribution: 'temurin' # Java 배포판 (Temurin 권장)
+          # cache: 'maven' # Maven을 사용하지 않으므로 이 줄은 제거되었습니다.
 
       - name: Compile Main.java # 3. Main.java 컴파일
         run: |
-          # Main.java가 src/Main.java 경로에 있을 경우
+          # Main.java가 src/Main.java 경로에 있고 UTF-8로 인코딩되어 있다고 가정합니다.
+          # -encoding 옵션은 인코딩 문제가 해결되었으므로 필요 없습니다.
           javac src/Main.java
           # 컴파일 후 src 디렉토리에 Main.class가 생성됩니다.
-          ls src/ # 생성된 파일 확인
+          echo "Files in src/ after compilation:" # 파일 목록 확인을 위한 메시지
+          ls -l src/ # 생성된 Main.class 파일이 있는지 확인
 
-      - name: Run Main.class # 4. Main.class 실행 및 출력 확인 (수정 필요)
+      - name: Run Main.class # 4. Main.class 실행 및 출력 확인
         run: |
           # Main.java에 'package src;' 선언이 있으므로 패키지명을 포함하여 실행합니다.
-          java -cp src src.Main # 'Main' 대신 'src.Main'으로 변경
+          # -cp src: 'src' 디렉토리를 클래스패스에 추가
+          # src.Main: 'src' 패키지 안에 있는 'Main' 클래스를 실행
+          java -cp src src.Main
           # 예상 출력: hello자바
 
       - name: Upload Main.class as artifact # 5. Main.class 아티팩트로 업로드 (선택 사항)
         uses: actions/upload-artifact@v4
         with:
-          name: compiled-java-class # 아티팩트 이름
-          path: src/Main.class # 업로드할 파일 경로
-          retention-days: 1 # 보존 기간
+          name: compiled-java-class # 아티팩트 이름 설정
+          path: src/Main.class # 업로드할 파일 경로 지정
+          retention-days: 1 # 아티팩트 보존 기간 (여기서는 1일)
