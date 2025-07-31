@@ -24,13 +24,16 @@ jobs:
 
       - name: Compile Main.java # 3. Main.java 컴파일
         run: |
-          # 이제 Main.java가 UTF-8이므로 -encoding 옵션이 필요 없습니다.
+          # Main.java가 src/Main.java 경로에 있을 경우
           javac src/Main.java
+          # 컴파일 후 src 디렉토리에 Main.class가 생성됩니다.
           ls src/ # 생성된 파일 확인
 
-      - name: Run Main.class # 4. Main.class 실행 및 출력 확인
+      - name: Run Main.class # 4. Main.class 실행 및 출력 확인 (수정 필요)
         run: |
-          java -cp src Main
+          # Main.java에 'package src;' 선언이 있으므로 패키지명을 포함하여 실행합니다.
+          java -cp src src.Main # 'Main' 대신 'src.Main'으로 변경
+          # 예상 출력: hello자바
 
       - name: Upload Main.class as artifact # 5. Main.class 아티팩트로 업로드 (선택 사항)
         uses: actions/upload-artifact@v4
